@@ -40,7 +40,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
   outputDir: './build',
   //这个publicPath非常重要,配错了就会导致路由跳转不了,./是相对路径,./是当前目录,不代表根目录,/ 才代表根目录
-  publicPath: '/',
+  // publicPath: '/',
   configureWebpack: {
     plugins: [
       AutoImport({
