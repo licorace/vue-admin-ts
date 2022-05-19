@@ -3,7 +3,6 @@
     <el-icon class="fold-menu" @click="handleFoldClick">
       <component :is="isFold ? 'fold' : 'expand'"></component>
     </el-icon>
-    <!-- <el-icon><Camera /></el-icon> -->
     <div class="content">
       <hy-breadcrumb :breadcrumbs="breadcrumbs"></hy-breadcrumb>
       <user-info></user-info>

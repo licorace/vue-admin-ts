@@ -35,7 +35,8 @@ const AutoImport = require("unplugin-auto-import/webpack")
 const Components = require("unplugin-vue-components/webpack")
 const { defineConfig } = require("@vue/cli-service")
 const { ElementPlusResolver } = require("unplugin-vue-components/resolvers")
-// const { IconsResolver } = require('unplugin-icons/resolver')
+const Icons = require("unplugin-icons/webpack")
+const IconsResolver = require("unplugin-icons/resolver")
 
 // const BundleAnalyzerPlugin =
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin
@@ -48,14 +49,28 @@ module.exports = defineConfig({
 
   configureWebpack: {
     externals: {
-      echarts: "echarts"
+      echarts: "echarts",
+      vue: "Vue",
+      "vue-router": "VueRouter",
+      vuex: "Vuex"
     },
     plugins: [
       AutoImport({
-        resolvers: [ElementPlusResolver()]
+        resolvers: [
+          ElementPlusResolver() // Auto import icon components
+          // 自动导入图标组件
+          // IconsResolver({
+          //   componentPrefix: "Icon"
+          // })
+        ]
       }),
       Components({
         resolvers: [
+          // Auto register icon components
+          // 自动注册图标组件
+          IconsResolver({
+            prefix: "Icon"
+          }),
           // Auto register Element Plus components
           // 自动导入 Element Plus 组件
           ElementPlusResolver()
@@ -63,6 +78,10 @@ module.exports = defineConfig({
       }),
       require("unplugin-element-plus/webpack")({
         // options
+      }),
+      Icons({
+        compiler: "vue3",
+        autoInstall: true
       })
       // new BundleAnalyzerPlugin({
       //   analyzerMode: "server",
