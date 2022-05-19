@@ -37,8 +37,8 @@ const { defineConfig } = require("@vue/cli-service")
 const { ElementPlusResolver } = require("unplugin-vue-components/resolvers")
 // const { IconsResolver } = require('unplugin-icons/resolver')
 
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin =
+//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -63,19 +63,19 @@ module.exports = defineConfig({
       }),
       require("unplugin-element-plus/webpack")({
         // options
-      }),
-      new BundleAnalyzerPlugin({
-        analyzerMode: "server",
-        analyzerHost: "127.0.0.1",
-        analyzerPort: 8889,
-        reportFilename: "report.html",
-        defaultSizes: "parsed",
-        openAnalyzer: true,
-        generateStatsFile: false,
-        statsFilename: "stats.json",
-        statsOptions: null,
-        logLevel: "info"
       })
+      // new BundleAnalyzerPlugin({
+      //   analyzerMode: "server",
+      //   analyzerHost: "127.0.0.1",
+      //   analyzerPort: 8889,
+      //   reportFilename: "report.html",
+      //   defaultSizes: "parsed",
+      //   openAnalyzer: true,
+      //   generateStatsFile: false,
+      //   statsFilename: "stats.json",
+      //   statsOptions: null,
+      //   logLevel: "info"
+      // })
     ]
   },
   devServer: {
