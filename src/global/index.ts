@@ -1,7 +1,9 @@
-import { App } from 'vue'
+import { App } from "vue"
 
-import registerProperties from './register-properties'
+import registerElement from "./register-element"
+import registerProperties from "./register-properties"
 
 export function globalRegister(app: App): void {
+  app.use(registerElement)
   app.use(registerProperties)
 }

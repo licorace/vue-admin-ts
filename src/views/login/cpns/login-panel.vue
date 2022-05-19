@@ -35,9 +35,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import LoginAccount from './login-account.vue'
-import LoginPhone from './login-phone.vue'
+import { defineComponent, ref } from "vue"
+import LoginAccount from "./login-account.vue"
+import LoginPhone from "./login-phone.vue"
 
 export default defineComponent({
   components: {
@@ -49,14 +49,14 @@ export default defineComponent({
     const isKeepPassword = ref(true)
     const accountRef = ref<InstanceType<typeof LoginAccount>>()
     const phoneRef = ref<InstanceType<typeof LoginPhone>>()
-    const currentTab = ref<string>('account')
+    const currentTab = ref<string>("account")
 
     //2.定义方法
     const handleLoginClick = () => {
-      if (currentTab.value === 'account') {
+      if (currentTab.value === "account") {
         accountRef.value?.loginAction(isKeepPassword.value)
       } else {
-        console.log('phoneRef调用loginAction')
+        console.log("phoneRef调用loginAction")
       }
 
       // console.log("立即登录")

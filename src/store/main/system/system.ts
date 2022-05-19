@@ -1,13 +1,13 @@
-import { Module } from 'vuex'
-import { IRootState } from '@/store/types'
-import { ISystemState } from './types'
+import { Module } from "vuex"
+import { IRootState } from "@/store/types"
+import { ISystemState } from "./types"
 
 import {
   getPageListData,
   deletePageData,
   createPageData,
   editPageData
-} from '@/service/main/system/system'
+} from "@/service/main/system/system"
 
 const systemModule: Module<ISystemState, IRootState> = {
   namespaced: true,
@@ -111,7 +111,7 @@ const systemModule: Module<ISystemState, IRootState> = {
       await deletePageData(pageUrl)
 
       //3.重新请求最新的数据
-      dispatch('getPageListAction', {
+      dispatch("getPageListAction", {
         pageName,
         queryInfo: {
           offset: 0,
@@ -127,7 +127,7 @@ const systemModule: Module<ISystemState, IRootState> = {
       await createPageData(pageUrl, newData)
 
       //2.重新请求最新的数据
-      dispatch('getPageListAction', {
+      dispatch("getPageListAction", {
         pageName,
         queryInfo: {
           offset: 0,
@@ -143,7 +143,7 @@ const systemModule: Module<ISystemState, IRootState> = {
       await editPageData(pageUrl, editData)
 
       //2.重新请求最新的数据
-      dispatch('getPageListAction', {
+      dispatch("getPageListAction", {
         pageName,
         queryInfo: {
           offset: 0,

@@ -19,25 +19,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
-import { useStore } from '@/store'
-import { useRouter } from 'vue-router'
-import LocalCache from '@/utils/cache'
+import { defineComponent, ref, computed } from "vue"
+import { useStore } from "@/store"
+import { useRouter } from "vue-router"
+import LocalCache from "@/utils/cache"
 
 export default defineComponent({
   setup() {
     const circleUrl = ref(
-      'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+      "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
     )
     const store = useStore()
     const router = useRouter()
     const name = computed(() => store.state.login.userInfo.name)
     const handleExitClick = () => {
       //这个只删token,name和password还会留着
-      LocalCache.deleteCache('token')
+      LocalCache.deleteCache("token")
       //这个直接清空所有localStorage
       // LocalCache.clearCache()
-      router.push('/main')
+      router.push("/main")
     }
     return {
       circleUrl,

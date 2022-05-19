@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios"
 
 // axios的实例对象
 // 1.模拟get请求
@@ -40,7 +40,7 @@ import axios from 'axios'
 
 // 4.axios的配置选项
 // 4.1. 全局的配置
-axios.defaults.baseURL = 'http://httpbin.org'
+axios.defaults.baseURL = "http://httpbin.org"
 axios.defaults.timeout = 10000
 // axios.defaults.headers = {}
 
@@ -73,8 +73,8 @@ axios.defaults.timeout = 10000
 // 5.axios.all -> 多个请求, 一起返回
 axios
   .all([
-    axios.get('/get', { params: { name: 'why', age: 18 } }),
-    axios.post('/post', { data: { name: 'why', age: 18 } })
+    axios.get("/get", { params: { name: "why", age: 18 } }),
+    axios.post("/post", { data: { name: "why", age: 18 } })
   ])
   .then((res) => {
     console.log(res[0].data)
@@ -89,11 +89,11 @@ axios.interceptors.request.use(
     // 想做的一些操作
     // 1.给请求添加token
     // 2.isLoading动画
-    console.log('请求成功的拦截')
+    console.log("请求成功的拦截")
     return config
   },
   (err) => {
-    console.log('请求发送错误')
+    console.log("请求发送错误")
     return err
   }
 )
@@ -101,11 +101,11 @@ axios.interceptors.request.use(
 // fn1: 数据响应成功(服务器正常的返回了数据 20x)
 axios.interceptors.response.use(
   (res) => {
-    console.log('响应成功的拦截')
+    console.log("响应成功的拦截")
     return res
   },
   (err) => {
-    console.log('服务器响应失败')
+    console.log("服务器响应失败")
     return err
   }
 )

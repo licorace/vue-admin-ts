@@ -34,20 +34,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { useStore } from '@/store'
+import { defineComponent, computed } from "vue"
+import { useStore } from "@/store"
 
-import HyCard from '@/base-ui/card'
+import HyCard from "@/base-ui/card"
 import {
   PieEchart,
   RoseEchart,
   LineEchart,
   BarEchart,
   MapEchart
-} from '@/components/page-echarts'
+} from "@/components/page-echarts"
 
 export default defineComponent({
-  name: 'dashboard',
+  name: "dashboard",
   components: {
     HyCard,
     PieEchart,
@@ -59,7 +59,7 @@ export default defineComponent({
   setup() {
     const store = useStore()
     //请求数据
-    store.dispatch('dashboard/getDashboardDataActions')
+    store.dispatch("dashboard/getDashboardDataActions")
 
     //获取数据
     const categoryGoodsCount = computed(() => {
@@ -71,7 +71,7 @@ export default defineComponent({
     const categoryGoodsSale = computed(() => {
       const xLabels: string[] = []
       const values: any[] = []
-      const title = ''
+      const title = ""
       for (const item of store.state.dashboard.categoryGoodsSale) {
         xLabels.push(item.name)
         values.push(item.goodsCount)
@@ -82,7 +82,7 @@ export default defineComponent({
     const categoryGoodsFavor = computed(() => {
       const xLabels: string[] = []
       const values: any[] = []
-      const title = '支持鼠标滚轮缩放'
+      const title = "支持鼠标滚轮缩放"
       for (const item of store.state.dashboard.categoryGoodsFavor) {
         xLabels.push(item.name)
         values.push(item.goodsFavor)

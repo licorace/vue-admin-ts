@@ -1,11 +1,11 @@
-import hyRequest from '@/service'
-import { IDataType } from '../../types'
+import hyRequest from "@/service"
+import { IDataType } from "../../types"
 
 enum DashboardAPI {
-  categoryGoodsCount = '/goods/category/count',
-  categoryGoodsSale = '/goods/category/sale',
-  categoryGoodsFavor = '/goods/category/favor',
-  addressGoodsSale = '/goods/address/sale'
+  categoryGoodsCount = "/goods/category/count",
+  categoryGoodsSale = "/goods/category/sale",
+  categoryGoodsFavor = "/goods/category/favor",
+  addressGoodsSale = "/goods/address/sale"
 }
 
 export function getCategoryGoodsCount() {

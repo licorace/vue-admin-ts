@@ -22,7 +22,7 @@
       <!-- 2.列中的插槽 -->
       <template #status="scope">
         <el-button plain :type="scope.row.enable ? 'success' : 'danger'">
-          {{ scope.row.enable ? '启用' : '禁用' }}
+          {{ scope.row.enable ? "启用" : "禁用" }}
         </el-button>
       </template>
       <template #createAt="scope">
@@ -66,12 +66,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, watch } from 'vue'
-import { useStore } from '@/store'
-import { usePermission } from '@/hooks/use-permissions'
-import { ElMessageBox } from 'element-plus'
+import { defineComponent, computed, ref, watch } from "vue"
+import { useStore } from "@/store"
+import { usePermission } from "@/hooks/use-permissions"
+import { ElMessageBox } from "element-plus"
 
-import HyTable from '@/base-ui/table'
+import HyTable from "@/base-ui/table"
 
 export default defineComponent({
   props: {
@@ -87,15 +87,15 @@ export default defineComponent({
   components: {
     HyTable
   },
-  emits: ['newBtnClick', 'editBtnClick'],
+  emits: ["newBtnClick", "editBtnClick"],
   setup(props, { emit }) {
     const store = useStore()
 
     //0.获取操作的权限
-    const isCreate = usePermission(props.pageName, 'create')
-    const isUpdate = usePermission(props.pageName, 'update')
-    const isDelete = usePermission(props.pageName, 'delete')
-    const isQuery = usePermission(props.pageName, 'query')
+    const isCreate = usePermission(props.pageName, "create")
+    const isUpdate = usePermission(props.pageName, "update")
+    const isDelete = usePermission(props.pageName, "delete")
+    const isQuery = usePermission(props.pageName, "query")
 
     //1.双向绑定pageInfo
     const pageInfo = ref({ currentPage: 1, pageSize: 10 })
@@ -104,7 +104,7 @@ export default defineComponent({
     //2.发送网络请求
     const getPageData = (queryInfo: any = {}) => {
       if (!isQuery) return
-      store.dispatch('system/getPageListAction', {
+      store.dispatch("system/getPageListAction", {
         pageName: props.pageName,
         queryInfo: {
           offset: (pageInfo.value.currentPage - 1) * pageInfo.value.pageSize,
@@ -126,10 +126,10 @@ export default defineComponent({
     //4.获取其他的动态插槽名称
     const otherPropSlots = props.contentTableConfig?.propList.filter(
       (item: any) => {
-        if (item.slotName === 'status') return false
-        if (item.slotName === 'createAt') return false
-        if (item.slotName === 'updateAt') return false
-        if (item.slotName === 'handler') return false
+        if (item.slotName === "status") return false
+        if (item.slotName === "createAt") return false
+        if (item.slotName === "updateAt") return false
+        if (item.slotName === "handler") return false
         return true
       }
     )
@@ -137,16 +137,16 @@ export default defineComponent({
     //5.删除/编辑/新建操作
     const handleDeleteClick = (item: any) => {
       console.log(item)
-      store.dispatch('system/deletePageDataAction', {
+      store.dispatch("system/deletePageDataAction", {
         pageName: props.pageName,
         id: item.id
       })
       if (item.id < 10) {
         ElMessageBox.alert(
           '<strong style="color:red">user id小于10不允许删除</strong>',
-          '警告',
+          "警告",
           {
-            confirmButtonText: 'OK',
+            confirmButtonText: "OK",
             dangerouslyUseHTMLString: true,
             center: true
           }
@@ -155,11 +155,11 @@ export default defineComponent({
     }
 
     const handleNewClick = () => {
-      emit('newBtnClick')
+      emit("newBtnClick")
     }
 
     const handleEditClick = (item: any) => {
-      emit('editBtnClick', item)
+      emit("editBtnClick", item)
     }
 
     return {

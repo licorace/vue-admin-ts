@@ -1,3 +1,3 @@
-import HyCard from './src/card.vue'
+import HyCard from "./src/card.vue"
 
 export default HyCard

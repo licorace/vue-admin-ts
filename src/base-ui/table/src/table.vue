@@ -62,13 +62,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue"
 
 export default defineComponent({
   props: {
     title: {
       type: String,
-      default: ''
+      default: ""
     },
     listData: {
       type: Array,
@@ -103,18 +103,18 @@ export default defineComponent({
       default: true
     }
   },
-  emits: ['selectionChange', 'update:page'],
+  emits: ["selectionChange", "update:page"],
   setup(props, { emit }) {
     const handleSelectionChange = (value: any) => {
-      emit('selectionChange', value)
+      emit("selectionChange", value)
     }
 
     const handleSizeChange = (pageSize: number) => {
-      emit('update:page', { ...props.page, pageSize })
+      emit("update:page", { ...props.page, pageSize })
     }
 
     const handleCurrentChange = (currentPage: number) => {
-      emit('update:page', { ...props.page, currentPage })
+      emit("update:page", { ...props.page, currentPage })
     }
 
     return {

@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed, withDefaults } from 'vue'
-import * as echarts from 'echarts'
+import { defineProps, computed, withDefaults } from "vue"
+import * as echarts from "echarts"
 
 const props = withDefaults(
   defineProps<{
@@ -15,24 +15,24 @@ const props = withDefaults(
     values: any[]
   }>(),
   {
-    title: ''
+    title: ""
   }
 )
 
-import BaseEchart from '@/base-ui/echart'
+import BaseEchart from "@/base-ui/echart"
 const options = computed(() => {
   return {
     title: {
       text: props.title
     },
     grid: {
-      bottom: '5%'
+      bottom: "5%"
     },
     xAxis: {
       data: props.xLabels,
       axisLabel: {
         inside: true,
-        color: '#fff'
+        color: "#fff"
       },
       axisTick: {
         show: false
@@ -50,31 +50,31 @@ const options = computed(() => {
         show: false
       },
       axisLabel: {
-        color: '#999'
+        color: "#999"
       }
     },
     dataZoom: [
       {
-        type: 'inside'
+        type: "inside"
       }
     ],
     series: [
       {
-        type: 'bar',
+        type: "bar",
         showBackground: true,
         itemStyle: {
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: '#83bff6' },
-            { offset: 0.5, color: '#188df0' },
-            { offset: 1, color: '#188df0' }
+            { offset: 0, color: "#83bff6" },
+            { offset: 0.5, color: "#188df0" },
+            { offset: 1, color: "#188df0" }
           ])
         },
         emphasis: {
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: '#2378f7' },
-              { offset: 0.7, color: '#2378f7' },
-              { offset: 1, color: '#83bff6' }
+              { offset: 0, color: "#2378f7" },
+              { offset: 0.7, color: "#2378f7" },
+              { offset: 1, color: "#83bff6" }
             ])
           }
         },

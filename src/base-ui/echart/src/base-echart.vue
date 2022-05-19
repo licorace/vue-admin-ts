@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, defineProps, withDefaults, watchEffect } from 'vue'
-import { EChartsOption } from 'echarts'
-import useEchart from '../hooks/useEchart'
+import { ref, onMounted, defineProps, withDefaults, watchEffect } from "vue"
+import { EChartsOption } from "echarts"
+import useEchart from "../hooks/useEchart"
 
 //定义props
 const props = withDefaults(
@@ -21,8 +21,8 @@ const props = withDefaults(
     height?: string
   }>(),
   {
-    width: '100%',
-    height: '360px'
+    width: "100%",
+    height: "360px"
   }
 )
 

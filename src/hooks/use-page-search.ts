@@ -1,5 +1,5 @@
-import { ref } from 'vue'
-import pageContent from '@/components/page-content'
+import { ref } from "vue"
+import pageContent from "@/components/page-content"
 
 export function usePageSearch() {
   const pageContentRef = ref<InstanceType<typeof pageContent>>()

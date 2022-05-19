@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, withDefaults } from 'vue'
-import BaseEchart from '@/base-ui/echart'
+import { computed, defineProps, withDefaults } from "vue"
+import BaseEchart from "@/base-ui/echart"
 
 const props = withDefaults(
   defineProps<{
@@ -15,7 +15,7 @@ const props = withDefaults(
     values: any[]
   }>(),
   {
-    title: ''
+    title: ""
   }
 )
 
@@ -25,41 +25,41 @@ const options = computed(() => {
       text: props.title
     },
     tooltip: {
-      trigger: 'axis',
+      trigger: "axis",
       axisPointer: {
-        type: 'cross',
+        type: "cross",
         label: {
-          backgroundColor: '#6a7985'
+          backgroundColor: "#6a7985"
         }
       }
     },
     legend: {},
     grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
+      left: "3%",
+      right: "4%",
+      bottom: "3%",
       containLabel: true
     },
     xAxis: [
       {
-        type: 'category',
+        type: "category",
         boundaryGap: false,
         data: props.xLabels
       }
     ],
     yAxis: [
       {
-        type: 'value'
+        type: "value"
       }
     ],
     series: [
       {
-        name: '分类销量统计',
-        type: 'line',
-        stack: '总量',
+        name: "分类销量统计",
+        type: "line",
+        stack: "总量",
         areaStyle: {},
         emphasis: {
-          focus: 'series'
+          focus: "series"
         },
         data: props.values
       }

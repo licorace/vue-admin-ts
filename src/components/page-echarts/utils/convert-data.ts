@@ -1,4 +1,4 @@
-import { coordinateData } from './coordinate-data'
+import { coordinateData } from "./coordinate-data"
 
 export const convertData = function (data: any) {
   const res = []

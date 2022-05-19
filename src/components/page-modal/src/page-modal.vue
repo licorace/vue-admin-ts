@@ -22,10 +22,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
-import { useStore } from '@/store'
+import { defineComponent, ref, watch } from "vue"
+import { useStore } from "@/store"
 
-import HyForm from '@/base-ui/form'
+import HyForm from "@/base-ui/form"
 
 export default defineComponent({
   props: {
@@ -68,16 +68,16 @@ export default defineComponent({
       dialogVisible.value = false
       if (Object.keys(props.defaultInfo).length) {
         //编辑
-        console.log('编辑用户')
-        store.dispatch('system/editPageDataAction', {
+        console.log("编辑用户")
+        store.dispatch("system/editPageDataAction", {
           pageName: props.pageName,
           id: props.defaultInfo.id,
           editData: { ...formData.value, ...props.otherInfo }
         })
       } else {
         //新建
-        console.log('新建用户')
-        store.dispatch('system/createPageDataAction', {
+        console.log("新建用户")
+        store.dispatch("system/createPageDataAction", {
           pageName: props.pageName,
           newData: { ...formData.value, ...props.otherInfo }
         })

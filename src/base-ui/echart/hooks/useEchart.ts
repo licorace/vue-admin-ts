@@ -1,12 +1,12 @@
-import * as echarts from 'echarts'
+import * as echarts from "echarts"
 
-import ChinaMapData from '../data/china.json'
+import ChinaMapData from "../data/china.json"
 
-echarts.registerMap('china', ChinaMapData)
+echarts.registerMap("china", ChinaMapData)
 
-export default function (el: HTMLDivElement, theme = 'light') {
+export default function (el: HTMLDivElement, theme = "light") {
   //初始化echarts
-  const echartInstance = echarts.init(el, theme, { renderer: 'svg' })
+  const echartInstance = echarts.init(el, theme, { renderer: "svg" })
 
   // 设置options
   const setOptions = (options: echarts.EChartsOption) => {
@@ -18,7 +18,7 @@ export default function (el: HTMLDivElement, theme = 'light') {
   }
 
   // 监听window尺寸的变化
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     echartInstance.resize()
   })
 

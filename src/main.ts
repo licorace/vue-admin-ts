@@ -1,19 +1,19 @@
-import { createApp } from 'vue'
-import { globalRegister } from './global'
-import 'normalize.css'
-import './assets/css/index.less'
-import * as Icons from '@element-plus/icons-vue'
+import { createApp } from "vue"
+import { globalRegister } from "./global"
+import "normalize.css"
+import "./assets/css/index.less"
+// import * as Icons from '@element-plus/icons-vue'
 
-import App from './App.vue'
+import App from "./App.vue"
 
-import router from './router'
-import store from './store'
-import { setupStore } from './store'
+import router from "./router"
+import store from "./store"
+import { setupStore } from "./store"
 
 const app = createApp(App)
-Object.keys(Icons).forEach((key) => {
-  app.component(key, Icons[key as keyof typeof Icons])
-})
+// Object.keys(Icons).forEach((key) => {
+//   app.component(key, Icons[key as keyof typeof Icons])
+// })
 
 //注册全局方法日期格式转换
 app.use(globalRegister)
@@ -22,4 +22,4 @@ app.use(store)
 setupStore()
 app.use(router)
 
-app.mount('#app')
+app.mount("#app")

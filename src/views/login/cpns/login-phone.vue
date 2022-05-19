@@ -20,19 +20,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive } from "vue"
 
-import { rules } from '../config/phone-config'
+import { rules } from "../config/phone-config"
 
 export default defineComponent({
   setup() {
     const phone = reactive({
-      num: '',
-      code: ''
+      num: "",
+      code: ""
     })
 
     const getcode = () => {
-      let str = ''
+      let str = ""
       for (let i = 0; i < 6; i++) {
         str += Math.floor(Math.random() * 10)
       }

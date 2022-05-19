@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue'
-import BaseEchart from '@/base-ui/echart'
-import { IPieEchartData } from '../types'
+import { defineProps, computed } from "vue"
+import BaseEchart from "@/base-ui/echart"
+import { IPieEchartData } from "../types"
 
 const props = defineProps<{
   roseData: IPieEchartData
@@ -28,15 +28,15 @@ const options = computed(() => {
       }
     },
     tooltip: {
-      trigger: 'item'
+      trigger: "item"
     },
     series: [
       {
-        name: '分类数据',
-        type: 'pie',
+        name: "分类数据",
+        type: "pie",
         radius: [10, 160],
-        center: ['50%', '50%'],
-        roseType: 'area',
+        center: ["50%", "50%"],
+        roseType: "area",
         itemStyle: {
           borderRadius: 8
         },

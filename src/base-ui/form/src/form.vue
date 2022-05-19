@@ -64,8 +64,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import { IFormItem } from '../types'
+import { defineComponent, PropType } from "vue"
+import { IFormItem } from "../types"
 
 export default defineComponent({
   props: {
@@ -79,11 +79,11 @@ export default defineComponent({
     },
     labelWidth: {
       type: String,
-      default: '100px'
+      default: "100px"
     },
     itemStyle: {
       type: Object,
-      default: () => ({ padding: '10px 40px' })
+      default: () => ({ padding: "10px 40px" })
     },
     colLayout: {
       type: Object,
@@ -96,7 +96,7 @@ export default defineComponent({
       })
     }
   },
-  emits: ['update:modelValue'],
+  emits: ["update:modelValue"],
   setup(props, { emit }) {
     // const formData = ref({ ...props.modelValue })
 
@@ -111,7 +111,7 @@ export default defineComponent({
     // )
 
     const handleValueChange = (value: any, field: string) => {
-      emit('update:modelValue', { ...props.modelValue, [field]: value })
+      emit("update:modelValue", { ...props.modelValue, [field]: value })
     }
 
     return {

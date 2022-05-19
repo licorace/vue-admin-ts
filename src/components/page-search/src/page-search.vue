@@ -23,8 +23,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import HyForm from '@/base-ui/form'
+import { defineComponent, ref } from "vue"
+import HyForm from "@/base-ui/form"
 
 export default defineComponent({
   props: {
@@ -36,14 +36,14 @@ export default defineComponent({
   components: {
     HyForm
   },
-  emits: ['resetBtnClick', 'queryBtnClick'],
+  emits: ["resetBtnClick", "queryBtnClick"],
   setup(props, { emit }) {
     //双向绑定的属性应该是由配置文件中的field来决定的
     //1.优化一:formData中的属性应该动态来决定
     const formItems = props.searchFormConfig?.formItems ?? []
     const formOriginData: any = {}
     for (const item of formItems) {
-      formOriginData[item.field] = ''
+      formOriginData[item.field] = ""
     }
     const formData = ref(formOriginData)
 
@@ -53,12 +53,12 @@ export default defineComponent({
       //   formData.value[`${key}`] = formOriginData[key]
       // }
       formData.value = formOriginData
-      emit('resetBtnClick')
+      emit("resetBtnClick")
     }
 
     // 3.优化三:当用户点击搜索
     const handleQueryClick = () => {
-      emit('queryBtnClick', formData.value)
+      emit("queryBtnClick", formData.value)
     }
 
     return {

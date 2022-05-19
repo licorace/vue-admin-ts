@@ -1,24 +1,24 @@
-import { Module } from 'vuex'
+import { Module } from "vuex"
 
 import {
   accountLoginRequest,
   requestUserInfoById,
   requestUserMenusByRoleId
-} from '@/service/login/login'
-import localCache from '@/utils/cache'
-import router from '@/router'
+} from "@/service/login/login"
+import localCache from "@/utils/cache"
+import router from "@/router"
 
-import { IAccount } from '@/service/login/types'
-import { ILoginState } from './types'
-import { IRootState } from '../types'
+import { IAccount } from "@/service/login/types"
+import { ILoginState } from "./types"
+import { IRootState } from "../types"
 
-import { mapMenusToRoutes, mapMenusToPermissions } from '@/utils/map-menus'
+import { mapMenusToRoutes, mapMenusToPermissions } from "@/utils/map-menus"
 
 const loginModule: Module<ILoginState, IRootState> = {
   namespaced: true,
   state: () => {
     return {
-      token: '',
+      token: "",
       userInfo: {},
       userMenus: [],
       permissions: []
@@ -40,7 +40,7 @@ const loginModule: Module<ILoginState, IRootState> = {
 
       //将routes => router.main.children
       routes.forEach((route) => {
-        router.addRoute('main', route)
+        router.addRoute("main", route)
       })
 
       //获取用户按钮的权限
@@ -55,43 +55,43 @@ const loginModule: Module<ILoginState, IRootState> = {
       const loginResult = await accountLoginRequest(payload)
       // console.log(loginResult)
       const { id, token } = loginResult.data
-      commit('changeToken', token)
-      localCache.setCache('token', token)
+      commit("changeToken", token)
+      localCache.setCache("token", token)
 
       //发送初始化的请求(完整的role/department)
-      dispatch('getInitialDataAction', null, { root: true })
+      dispatch("getInitialDataAction", null, { root: true })
 
       //2.请求用户信息
       const userInfoResult = await requestUserInfoById(id)
       // console.log(userInfoResult)
       const userInfo = userInfoResult.data
-      commit('changeUserInfo', userInfo)
-      localCache.setCache('userInfo', userInfo)
+      commit("changeUserInfo", userInfo)
+      localCache.setCache("userInfo", userInfo)
 
       //3.请求用户菜单
       const roleId = userInfo.role.id
       const userMenusResult = await requestUserMenusByRoleId(roleId)
       const userMenus = userMenusResult.data
-      commit('changeUserMenus', userMenus)
-      localCache.setCache('userMenus', userMenus)
+      commit("changeUserMenus", userMenus)
+      localCache.setCache("userMenus", userMenus)
 
       //4.跳到首页
-      router.push('/main')
+      router.push("/main")
     },
     loadLocalLogin({ commit, dispatch }) {
-      const token = localCache.getCache('token')
+      const token = localCache.getCache("token")
       if (token) {
-        commit('changeToken', token)
+        commit("changeToken", token)
         //发送初始化的请求(完整的role/department)
-        dispatch('getInitialDataAction', null, { root: true })
+        dispatch("getInitialDataAction", null, { root: true })
       }
-      const userInfo = localCache.getCache('userInfo')
+      const userInfo = localCache.getCache("userInfo")
       if (userInfo) {
-        commit('changeUserInfo', userInfo)
+        commit("changeUserInfo", userInfo)
       }
-      const userMenus = localCache.getCache('userMenus')
+      const userMenus = localCache.getCache("userMenus")
       if (userMenus) {
-        commit('changeUserMenus', userMenus)
+        commit("changeUserMenus", userMenus)
       }
     }
   }

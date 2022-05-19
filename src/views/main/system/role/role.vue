@@ -29,24 +29,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, nextTick } from 'vue'
-import { useStore } from '@/store'
-import { menuMapLeafKeys } from '@/utils/map-menus'
+import { defineComponent, computed, ref, nextTick } from "vue"
+import { useStore } from "@/store"
+import { menuMapLeafKeys } from "@/utils/map-menus"
 
-import pageSearch from '@/components/page-search'
-import pageContent from '@/components/page-content'
-import pageModal from '@/components/page-modal'
+import pageSearch from "@/components/page-search"
+import pageContent from "@/components/page-content"
+import pageModal from "@/components/page-modal"
 
-import { searchFormConfig } from './config/search.config'
-import { contentTableConfig } from './config/content.config'
-import { modalConfig } from './config/modal.config'
+import { searchFormConfig } from "./config/search.config"
+import { contentTableConfig } from "./config/content.config"
+import { modalConfig } from "./config/modal.config"
 
-import { usePageModal } from '@/hooks/use-page-modal'
+import { usePageModal } from "@/hooks/use-page-modal"
 
-import { ElTree } from 'element-plus'
+import { ElTree } from "element-plus"
 
 export default defineComponent({
-  name: 'role',
+  name: "role",
   components: {
     pageSearch,
     pageContent,

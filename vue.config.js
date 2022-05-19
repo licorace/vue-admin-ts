@@ -31,17 +31,25 @@
 
 // webpack.config.js
 
-const AutoImport = require('unplugin-auto-import/webpack')
-const Components = require('unplugin-vue-components/webpack')
-const { defineConfig } = require('@vue/cli-service')
-const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+const AutoImport = require("unplugin-auto-import/webpack")
+const Components = require("unplugin-vue-components/webpack")
+const { defineConfig } = require("@vue/cli-service")
+const { ElementPlusResolver } = require("unplugin-vue-components/resolvers")
+// const { IconsResolver } = require('unplugin-icons/resolver')
+
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  outputDir: './build',
+  outputDir: "./build",
   //这个publicPath非常重要,配错了就会导致路由跳转不了,./是相对路径,./是当前目录,不代表根目录,/ 才代表根目录
   // publicPath: '/',
+
   configureWebpack: {
+    externals: {
+      echarts: "echarts"
+    },
     plugins: [
       AutoImport({
         resolvers: [ElementPlusResolver()]
@@ -53,17 +61,29 @@ module.exports = defineConfig({
           ElementPlusResolver()
         ]
       }),
-      require('unplugin-element-plus/webpack')({
+      require("unplugin-element-plus/webpack")({
         // options
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: "server",
+        analyzerHost: "127.0.0.1",
+        analyzerPort: 8889,
+        reportFilename: "report.html",
+        defaultSizes: "parsed",
+        openAnalyzer: true,
+        generateStatsFile: false,
+        statsFilename: "stats.json",
+        statsOptions: null,
+        logLevel: "info"
       })
     ]
   },
   devServer: {
     proxy: {
-      '^/api': {
-        target: 'http://152.136.185.210:5000',
+      "^/api": {
+        target: "http://152.136.185.210:5000",
         pathRewrite: {
-          '^/api': ''
+          "^/api": ""
         },
         changeOrigin: true
       }

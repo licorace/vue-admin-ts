@@ -1,5 +1,5 @@
-import hyRequest from '../../index'
-import { IDataType } from '../../types'
+import hyRequest from "../../index"
+import { IDataType } from "../../types"
 
 //获取数据
 export function getPageListData(url: string, queryInfo: any) {

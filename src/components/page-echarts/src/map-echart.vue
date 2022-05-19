@@ -5,11 +5,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, withDefaults } from 'vue'
-import BaseEchart from '@/base-ui/echart'
-import { IPieEchartData } from '../types'
+import { computed, defineProps, withDefaults } from "vue"
+import BaseEchart from "@/base-ui/echart"
+import { IPieEchartData } from "../types"
 
-import { convertData } from '../utils/convert-data'
+import { convertData } from "../utils/convert-data"
 
 const props = withDefaults(
   defineProps<{
@@ -17,24 +17,24 @@ const props = withDefaults(
     mapData: IPieEchartData[]
   }>(),
   {
-    title: ''
+    title: ""
   }
 )
 
 const options = computed(() => {
   return {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     title: {
-      text: '全国销量统计',
-      left: 'center',
+      text: "全国销量统计",
+      left: "center",
       textStyle: {
-        color: '#fff'
+        color: "#fff"
       }
     },
     tooltip: {
-      trigger: 'item',
+      trigger: "item",
       formatter: function (params: any) {
-        return params.name + ' : ' + params.value[2]
+        return params.name + " : " + params.value[2]
       }
     },
     visualMap: {
@@ -43,42 +43,42 @@ const options = computed(() => {
       left: 20,
       bottom: 20,
       calculable: true,
-      text: ['高', '低'],
+      text: ["高", "低"],
       inRange: {
-        color: ['rgb(70, 240, 252)', 'rgb(250, 220, 46)', 'rgb(245, 38, 186)']
+        color: ["rgb(70, 240, 252)", "rgb(250, 220, 46)", "rgb(245, 38, 186)"]
       },
       textStyle: {
-        color: '#fff'
+        color: "#fff"
       }
     },
     geo: {
-      map: 'china',
-      roam: 'scale',
+      map: "china",
+      roam: "scale",
       emphasis: {
-        areaColor: '#f4cccc',
-        borderColor: 'rgb(9, 54, 95)',
+        areaColor: "#f4cccc",
+        borderColor: "rgb(9, 54, 95)",
         itemStyle: {
-          areaColor: '#f4cccc'
+          areaColor: "#f4cccc"
         }
       }
     },
     series: [
       {
-        name: '销量',
-        type: 'scatter',
-        coordinateSystem: 'geo',
+        name: "销量",
+        type: "scatter",
+        coordinateSystem: "geo",
         data: convertData(props.mapData),
         symbolSize: 12,
         emphasis: {
           itemStyle: {
-            borderColor: '#fff',
+            borderColor: "#fff",
             borderWidth: 1
           }
         }
       },
       {
-        type: 'map',
-        map: 'china',
+        type: "map",
+        map: "china",
         geoIndex: 0,
         aspectScale: 0.75,
         tooltip: {
