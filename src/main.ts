@@ -2,7 +2,7 @@ import { createApp } from "vue"
 import { globalRegister } from "./global"
 import "normalize.css"
 import "./assets/css/index.less"
-// import * as Icons from '@element-plus/icons-vue'
+// import * as Icons from "@element-plus/icons-vue"
 
 import App from "./App.vue"
 

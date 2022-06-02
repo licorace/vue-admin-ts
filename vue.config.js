@@ -57,7 +57,8 @@ module.exports = defineConfig({
     plugins: [
       AutoImport({
         resolvers: [
-          ElementPlusResolver() // Auto import icon components
+          ElementPlusResolver()
+          // Auto import icon components
           // 自动导入图标组件
           // IconsResolver({
           //   componentPrefix: "Icon"
