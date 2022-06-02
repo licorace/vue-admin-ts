@@ -23,12 +23,11 @@ import { defineComponent, ref, computed } from "vue"
 import { useStore } from "@/store"
 import { useRouter } from "vue-router"
 import LocalCache from "@/utils/cache"
+import user_logo from "@/assets/img/1_user.svg"
 
 export default defineComponent({
   setup() {
-    const circleUrl = ref(
-      "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-    )
+    const circleUrl = ref(user_logo)
     const store = useStore()
     const router = useRouter()
     const name = computed(() => store.state.login.userInfo.name)
